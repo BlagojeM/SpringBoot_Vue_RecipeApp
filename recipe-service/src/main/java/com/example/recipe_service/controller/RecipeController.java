@@ -28,7 +28,7 @@ public class RecipeController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000") // Add your frontend domain here
-    @PutMapping("/{id}")
+    @PutMapping("editrecipe/{id}")
     public Recipe updateRecipe(@PathVariable Long id, @RequestBody Recipe recipeDetails) {
         Recipe recipe = recipeRepository.findById(id).orElseThrow(() -> new RuntimeException("Recipe not found"));
         recipe.setTitle(recipeDetails.getTitle());

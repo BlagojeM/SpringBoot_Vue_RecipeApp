@@ -13,13 +13,22 @@
         <span class="recipe-ingredient-number">{{ ingredient.number }}</span>
         <span class="recipe-ingredient-unit">{{ ingredient.unit }}</span>
       </span>
-      <UButton
-        class="m-2.5"
-        color="primary"
-        variant="outline"
-        label="Obriši"
-        @click="deleteRecipe"
-      />
+      <span>
+        <UButton
+          class="m-2.5"
+          color="primary"
+          variant="outline"
+          label="Obriši"
+          @click="deleteRecipe"
+        />
+        <UButton
+          class="m-2.5"
+          color="primary"
+          variant="outline"
+          label="Izmeni"
+          @click="editRecipe"
+        />
+      </span>
     </div>
   </div>
 </template>
@@ -45,10 +54,14 @@ export default {
     function deleteRecipe() {
       ctx.emit("delete-recipe", props.id);
     }
+    function editRecipe() {
+      ctx.emit("edit-recipe", props);
+    }
 
     return {
       route,
       props,
+      editRecipe,
       deleteRecipe,
     };
   },
